@@ -1,4 +1,5 @@
 /*
+*STUDENT PROJECT UPDATED WITH ARRAYS*
  * Update your Homework 3 to use arrays to store the values of your tests and finals.
 Remove the instance variables that store the concepts tests and replace it with 1 array that stores
 all concept tests call this array conceptArray. This array should have 3 elements since there are 2
