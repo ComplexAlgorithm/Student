@@ -1,0 +1,90 @@
+
+import java.util.Scanner;
+
+
+public class StudentDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner keyboard = new Scanner(System.in);
+		Student me = new Student();
+		int option;
+		do {
+			System.out.println("Press 1 to change the name of the student");
+			System.out.println("Press 2 to change the score of Concept Test 1");
+			System.out.println("Press 3 to change the score of Programming Test 1");
+			System.out.println("Press 4 to change the score of Concept Test 2");
+			System.out.println("Press 5 to change the score of Programming Test 2");
+			System.out.println("Press 6 to change the score of Concept Final");
+			System.out.println("Press 7 to change the score of Programming Final");
+			System.out.println("Press 8 to look at of the student's information");
+			System.out.println("Press 9 to look at the name of the professor");
+			System.out.println("Press 10 to change the name of the professor");
+			System.out.println("Press 11 to end the program");
+			option = keyboard.nextInt();
+			keyboard.nextLine();
+			
+			if(option == 1) {
+				System.out.println("Enter the name of the student");
+				String newName = keyboard.nextLine();
+				me.setName(newName);
+			}
+			else if(option == 2) {
+				System.out.println("Enter the score of Concept Test 1");
+				int newConceptTest1 = keyboard.nextInt();
+				me.setConceptTest1(newConceptTest1);
+			}
+			else if(option == 3) {
+				System.out.println("Enter the score of Programming Test 1");
+				int newProgrammingTest1 = keyboard.nextInt();
+				me.setProgrammingTest1(newProgrammingTest1);
+			}
+			else if(option == 4) {
+				System.out.println("Enter the score of Concept Test 2");
+				int newConceptTest2 = keyboard.nextInt();
+				me.setConceptTest2(newConceptTest2);
+			}
+			else if(option == 5) {
+				System.out.println("Enter the score of Programming Test 2");
+				int newProgrammingTest2 = keyboard.nextInt();
+				me.setProgrammingTest2(newProgrammingTest2);
+			}
+			else if(option == 6) {
+				System.out.println("Enter the score of Concept Final");
+				int newConceptFinal = keyboard.nextInt();
+				me.setConceptFinal(newConceptFinal);
+			}
+			else if(option == 7) {
+				System.out.println("Enter the score of Programming Final");
+				int newProgrammingFinal = keyboard.nextInt();
+				me.setProgrammingFinal(newProgrammingFinal);
+			}
+			else if(option == 8) {
+				System.out.println("The student's name is: " + me.getName());
+				System.out.println("The student's concept test 1 score is: " + me.getConceptTest1());
+				System.out.println("The student's programming test 1 score is: " + me.getProgrammingTest1());
+				System.out.println("The student's concept test 2 score is: " + me.getConceptTest2());
+				System.out.println("The student's programming test 2 score is: " + me.getProgrammingTest2());
+				System.out.println("The student's concept final score is: " + me.getConceptFinal());
+				System.out.println("The student's programming final score is: " + me.getProgrammingFinal());
+				System.out.println("The student's final percentage is: " + me.calculateFinalPercentage());
+				System.out.println("The student's letter grade is: " + me.determineLetterGrade());
+			}
+			else if(option == 9) {
+				System.out.println("The name of the professor is: " + Student.getProfessorName());
+			}
+			else if(option == 10) {
+				System.out.println("Enter the name of the new professor");
+				String newProfessor = keyboard.nextLine();
+				Student.setProfessorName(newProfessor);
+			}
+			else if(option == 11) {
+				System.out.println("Thank you for using this program");
+			}
+			else {
+				System.out.println("Invalid option.");
+			}
+		}while(option != 11);
+	}
+
+}
