@@ -1,31 +1,3 @@
-/*Requirements Analysis:
-The second part of this program should be developed in a class called StudentDemo. This class
-will have a main method inside of it where an object of the Student class will be created. Then
-the user will be given options to update their name or any of their scores. There should be an
-option for each test and final. Finally there should an option to look at all the information about
-the student. This main method should also have a loop to allow this program to continue running
-until the user chooses the last option which is to exit the program. If the user chooses an invalid
-option then an error message should be printed and the program should continue running until
-the user chooses to exit the program. 
-Design:
-1. Open student class and main method and Scanner
-2. Create student object
-3. create option variable
-4.do{
-5. option 1 - update name
-6. option 2 - update conceptTest1
-7. option 3 - update programmingTest1
-8. option 4 - update conceptTest2
-9. option 5 - update programmingTest2
-10. option 6 - update conceptFinal
-11. option 7 - update programmingFinal
-12. option 8 - display all information
-13. option 9 - exit the program
-14. Save options
-15. if option < 1 && option > 9
-16. Print error message
-17. While option != 9
- */
 import java.util.Scanner;
 public class StudentDemo {
 	public static void main(String[] args) {

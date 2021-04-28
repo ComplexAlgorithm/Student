@@ -1,34 +1,31 @@
-/* Requirements Analysis:
- *  Create an object-oriented program that tracks your progress as a student in this class. The
-program should keep track of your name and your scores on graded activities in this class. The
-scores on each test and each final should be stored separately. The program should allow a
-student to enter his or her name, a test score, or a final exam score. All scores must range
-between 0 and 100. Any time a user enters an invalid value that value will be ignored and will
-not be saved.
-Since this program is object-oriented it must be developed first as a class called Student. This
-class should store name and the student scores as instance variables. There should be one
-instance variable for each of the following: name, concept test 1, programming test 1, concept
-test 2, programming test 2, concept final, and programming final. These instance variables
-should be made private to prevent invalid values from being stored in them, but there should be
-ways to access and mutate these instance variables using public methods. This class should also
-have a default constructor (no parameters) setting the name to blank and making each of the
-other scores of the student set to 0.
-Design:
-1. Create student class
-2. Create instance variables for name, conceptTest1, programmingTest1, conceptTest2, programmingTest2,
- conceptFinal, programmingFinal
-3. Make instance variables private
-4. Create public non-static methods for each instance variable
+/*
+ * Update your Homework 3 to use arrays to store the values of your tests and finals.
+Remove the instance variables that store the concepts tests and replace it with 1 array that stores
+all concept tests call this array conceptArray. This array should have 3 elements since there are 2
+concept tests and 1 concept final. Concept Test 1 should be placed in element 0, Concept Test 2
+should be in element 1, and the Concept Final should be placed in element 2.
+Remove the instance variables that store the programming tests and replace it with 1 array that
+stores all programming tests call this array programmingArray. This array should have 3
+elements since there are 2 programming tests and 1 programming final. Programming Test 1
+should be placed in element 0, Programming Test 2 should be in element 1, and the
+Programming final should be placed in element 2.
+It is important to not change any method signatures in the Student class. The StudentDemo that
+you have already written depends on these public method signatures and will not work if you
+change them. The instance variables and the method definitions will need to change to adjust to
+using arrays instead of primitive variables. The default constructor should also change to
+initialize conceptArray and programmingArray to a size of 3 and set all of the elements to the
+value of 0.
+After making these changes to the Student.java class attempt to run your StudentDemo.java file
+without any changes. If you have correctly made the changes to the Student class your
+StudentDemo.java should work without any changes and should do exactly what Assignment 2
+did, but it will be using arrays inside the Student class.
+
  */
 public class Student {
 //instance variables
 	private String name = "";
-	private int conceptTest1;
-	private int programmingTest1;
-	private int conceptTest2;
-	private int programmingTest2;
-	private int conceptFinal;
-	private int programmingFinal;
+	private int [] conceptArray;
+	private int [] programmingArray;
 	//private double finalPercentage;
 	//private char letterGrade;
 	
@@ -38,12 +35,13 @@ public class Student {
 // default constructor
 	public Student() {
 		name = "";
-		conceptTest1 = 0;
-		programmingTest1 = 0;
-		conceptTest2 = 0;
-		programmingTest2 = 0;
-		conceptFinal = 0;
-		programmingFinal = 0;
+		conceptArray = new int [3];
+		programmingArray = new int [3];
+		
+		for(int index = 0; index < 3; index++) {
+			conceptArray[index] = 0;
+			programmingArray[index] = 0;
+		}
 	}
 	//non-static methods
 	public String getName() {
@@ -53,59 +51,73 @@ public class Student {
 		name = newName;
 	}
 	public int getConceptTest1() {
-		return conceptTest1;
+		return conceptArray[0];
 	}
 	public void setConceptTest1(int newConceptTest1) {
-		if(newConceptTest1 >= 0 || newConceptTest1 <= 100) {
-			conceptTest1 = newConceptTest1;
+		if(newConceptTest1 >= 0 && newConceptTest1 <= 100) {
+			conceptArray[0] = newConceptTest1;
 		}
 	}
 	public int getProgrammingTest1() {
-		return programmingTest1;
+		return programmingArray[0];
 	}
 	
 	public void setProgrammingTest1(int newProgrammingTest1) {
-		if(newProgrammingTest1 >= 0 || newProgrammingTest1 <= 100) {
-			programmingTest1 = newProgrammingTest1;
+		if(newProgrammingTest1 >= 0 && newProgrammingTest1 <= 100) {
+			programmingArray[0] = newProgrammingTest1;
 		}
 	}
 	public int getConceptTest2() {
-		return conceptTest2;
+		return conceptArray[1];
 	}
 	public void setConceptTest2(int newConceptTest2) {
-		if(newConceptTest2 >= 0 || newConceptTest2 <= 100) {
-			conceptTest2 = newConceptTest2;
+		if(newConceptTest2 >= 0 && newConceptTest2 <= 100) {
+			conceptArray[1] = newConceptTest2;
 		}
 	}
 	public int getProgrammingTest2() {
-		return programmingTest2;
+		return programmingArray[1];
 	}
 	public void setProgrammingTest2(int newProgrammingTest2) {
-		if(newProgrammingTest2 >= 0 || newProgrammingTest2 <= 100) {
-			programmingTest2 = newProgrammingTest2;
+		if(newProgrammingTest2 >= 0 && newProgrammingTest2 <= 100) {
+			programmingArray[1] = newProgrammingTest2;
 		}
 	}
 	public int getConceptFinal() {
-		return conceptFinal;
+		return conceptArray[2];
 	}
 	public void setConceptFinal(int newConceptFinal) {
-		if(newConceptFinal >= 0 || newConceptFinal <= 100) {
-			conceptFinal = newConceptFinal;
+		if(newConceptFinal >= 0 && newConceptFinal <= 100) {
+			conceptArray[2] = newConceptFinal;
+			
+			if(conceptArray[2] > conceptArray[0]) {
+				conceptArray[0] = conceptArray[2];
+			}
+			if(conceptArray[2] > conceptArray[1]) {
+				conceptArray[1] = conceptArray[2];
+			}
 		}
 	}
 	public int getProgrammingFinal() {
-		return programmingFinal;
+		return programmingArray[2];
 	}
 	public void setProgrammingFinal(int newProgrammingFinal) {
-		if(newProgrammingFinal >= 0 || newProgrammingFinal <= 100) {
-			programmingFinal = newProgrammingFinal;
+		if(newProgrammingFinal >= 0 && newProgrammingFinal <= 100) {
+			programmingArray[2] = newProgrammingFinal;
+			
+			if(programmingArray[2] > programmingArray[0]) {
+				programmingArray[0] = programmingArray[2];
+			}
+			if(programmingArray[2] > programmingArray[1]) {
+				programmingArray[1] = programmingArray[2];
+			}
 		}
 	}
 	
 	public double calculateFinalPercentage() {
-		double finalPercentage = (conceptTest1 * .20) + (programmingTest1 * .20) + (conceptTest2 * .20) 
-				+ (programmingTest2 * .20) + (conceptFinal * .10)
-				+ (programmingFinal * .10);
+		double finalPercentage = (conceptArray[0] * .20) + (programmingArray[0] * .20) + (conceptArray[1] * .20) 
+				+ (programmingArray[1] * .20) + (conceptArray[2] * .10)
+				+ (programmingArray[2] * .10);
 		return finalPercentage;
 	}
 	
