@@ -1,0 +1,143 @@
+public class Student {
+	//instance variables
+	private String name;
+	private int conceptTest1;
+	private int conceptTest2;
+	private int conceptFinal;
+	private int programmingTest1;
+	private int programmingTest2;
+	private int programmingFinal;
+
+	//static variables
+	private static String professorName = "Anwar Ahmad";
+		
+	//static methods
+	public static void setProfessorName(String newProfessorName) {
+		professorName = newProfessorName;
+	}
+		
+	public static String getProfessorName() {
+		return professorName;
+	}
+	
+	//default constructor
+	public Student() {
+		name = "";
+		conceptTest1 = 0;
+		conceptTest2 = 0;
+		conceptFinal = 0;
+		programmingTest1 = 0;
+		programmingTest2 = 0;
+		programmingFinal = 0;
+	}
+	
+	//non-static methods
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String newName) {
+		name = newName;
+	}
+	
+	public int getConceptTest1() {
+		return conceptTest1;
+	}
+
+	public void setConceptTest1(int newConceptTest1) {
+		if(newConceptTest1 >= 0 && newConceptTest1 <= 100)
+			conceptTest1 = newConceptTest1;
+	}
+
+	public int getProgrammingTest1() {
+		return programmingTest1;
+	}
+
+	public void setProgrammingTest1(int newProgrammingTest1) {
+		if(newProgrammingTest1 >= 0 && newProgrammingTest1 <= 100)
+			programmingTest1 = newProgrammingTest1;
+	}
+
+	public int getConceptTest2() {
+		return conceptTest2;
+	}
+
+	public void setConceptTest2(int newConceptTest2) {
+		if(newConceptTest2 >= 0 && newConceptTest2 <= 100)
+			conceptTest2 = newConceptTest2;
+	}
+
+	public int getProgrammingTest2() {
+		return programmingTest2;
+	}
+
+	public void setProgrammingTest2(int newProgrammingTest2) {
+		if(newProgrammingTest2 >= 0 && newProgrammingTest2 <= 100)
+			programmingTest2 = newProgrammingTest2;
+	}
+	
+	public int getConceptFinal() {
+		return conceptFinal;
+	}
+
+	public void setConceptFinal(int newConceptFinal) {
+		if(newConceptFinal >= 0 && newConceptFinal <= 100) {
+			conceptFinal = newConceptFinal;
+		
+			if(conceptFinal > conceptTest1) {
+				conceptTest1 = conceptFinal;
+			}
+			
+			if(conceptFinal > conceptTest2) {
+				conceptTest2 = conceptFinal;
+			}
+		}
+	}
+
+	public int getProgrammingFinal() {
+		return programmingFinal;
+	}
+
+	public void setProgrammingFinal(int newProgrammingFinal) {
+		if(newProgrammingFinal >= 0 && newProgrammingFinal <= 100) {
+			programmingFinal = newProgrammingFinal;
+			
+			if(programmingFinal > programmingTest1) {
+				programmingTest1 = programmingFinal;
+			}
+			
+			if(programmingFinal > programmingTest2) {
+				programmingTest2 = programmingFinal;
+			}
+		}		
+	}
+	
+	public double calculateFinalPercentage() {
+		double finalPercentage = ((double)conceptTest1 * .20) +
+								 ((double)conceptTest2 * .20) +
+								 ((double)conceptFinal * .10) +
+								 ((double)programmingTest1 * .20) +
+								 ((double)programmingTest2 * .20) +
+								 ((double)programmingFinal * .10);
+		return finalPercentage;
+	}
+	
+	public char determineLetterGrade() {
+		double finalPercentage = calculateFinalPercentage();
+		char grade = ' ';
+		
+		if(finalPercentage >= 90 && finalPercentage <= 100)
+			grade = 'A';
+		else if(finalPercentage >= 80 && finalPercentage <= 89) 
+			grade = 'B';
+		else if(finalPercentage >= 70 && finalPercentage <= 79) 
+			grade = 'C';
+		else if(finalPercentage >= 1 && finalPercentage <= 69)
+			grade = 'D';
+		else 
+			grade = 'F';
+		
+		return grade;
+	}
+	
+}
